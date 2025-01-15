@@ -31,7 +31,14 @@ public class Employee {
     @Column
     private String adress;
 
-    public Employee(int employeeId, String firstName, String lastName, String department, String hireDate, String phoneNumber, String email, String adress) {
+    @Column
+    private String jobTitle;
+
+    @Column
+    private String status;
+
+    public Employee(int employeeId, String firstName, String lastName, String department, String hireDate,
+                    String phoneNumber, String email, String adress, String jobTitle, String status) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,9 +47,31 @@ public class Employee {
         this.PhoneNumber = phoneNumber;
         this.email = email;
         this.adress = adress;
+        this.jobTitle = jobTitle;
+        this.status = status;
     }
 
     public Employee () {}
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getPhoneNumber() {
         return PhoneNumber;
@@ -111,8 +140,4 @@ public class Employee {
         return employeeId == employee.employeeId && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(department, employee.department) && Objects.equals(hireDate, employee.hireDate) && Objects.equals(PhoneNumber, employee.PhoneNumber) && Objects.equals(email, employee.email) && Objects.equals(adress, employee.adress);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(employeeId, firstName, lastName, department, hireDate, PhoneNumber, email, adress);
-    }
 }

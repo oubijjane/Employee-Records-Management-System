@@ -25,25 +25,37 @@ public class EmplyeeServiceImpl implements EmployeeService{
     @Override
     public List<Employee> findByFirstName(String firstName) {
         Optional<List<Employee>> result = Optional.ofNullable(employeeDAO.findByFirstName(firstName));
-        List<Employee> employee = null;
+        List<Employee> employees = null;
         if(result.isPresent()) {
-            employee = result.get();
+            employees = result.get();
         } else {
             throw new RuntimeException("Did not find employee " + firstName);
         }
-        return employee;
+        return employees;
     }
 
     @Override
     public List<Employee> findByLastName(String lastName) {
         Optional<List<Employee>> result = Optional.ofNullable(employeeDAO.findByLastName(lastName));
-        List<Employee> employee = null;
+        List<Employee> employees = null;
         if(result.isPresent()) {
-            employee = result.get();
+            employees = result.get();
         } else {
             throw new RuntimeException("Did not find employee " + lastName);
         }
-        return employee;
+        return employees;
+    }
+
+    @Override
+    public List<Employee> findByJoBTitle(String jobTitle) {
+        Optional<List<Employee>> result = Optional.ofNullable(employeeDAO.findByJobTitle(jobTitle));
+        List<Employee> employees = null;
+        if(result.isPresent()) {
+            employees = result.get();
+        } else {
+            throw new RuntimeException("Did not find employee with job title: " + jobTitle);
+        }
+        return employees;
     }
 
     @Override
@@ -56,6 +68,16 @@ public class EmplyeeServiceImpl implements EmployeeService{
             throw new RuntimeException("Did not find employee id - " + id);
         }
         return employee;
+    }
+
+    @Override
+    public Employee save(Employee employee) {
+       return employeeDAO.save(employee);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        employeeDAO.deleteById(id);
     }
 
 }
