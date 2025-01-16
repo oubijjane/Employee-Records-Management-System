@@ -1,6 +1,8 @@
 package com.records.demo.restController;
 
+import com.records.demo.entity.Roles;
 import com.records.demo.entity.Users;
+import com.records.demo.service.RolesService;
 import com.records.demo.service.UserService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,14 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
+    private RolesService rolesService;
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder, RolesService rolesService) {
         this.userService = userService;
         this.passwordEncoder= passwordEncoder;
+        this.rolesService = rolesService;
     }
 
     @GetMapping("/users")
@@ -44,9 +48,16 @@ public class UserController {
 
     @PostMapping("/users")
     public Users addUser(@RequestBody @NotNull Users user) {
-        user.setId(0);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userService.save(user);
+    }
+
+    @PutMapping("/users/{id}/{role}")
+    public Users addRole(@PathVariable("id") int id, @PathVariable("role") String role) {
+       Users user =  userService.findById(id);
+       rolesService.save(new Roles(user, role));
+
+        return  user;
     }
 
     @DeleteMapping("/users/{id}")

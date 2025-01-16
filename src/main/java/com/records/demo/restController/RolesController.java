@@ -43,7 +43,6 @@ public class RolesController {
 
     @PostMapping("/roles")
     public Roles addRole(@RequestBody @NotNull Roles role) {
-        role.setId(0);
         return rolesService.save(role);
     }
     @PutMapping("/roles")

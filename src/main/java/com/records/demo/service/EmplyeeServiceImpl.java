@@ -4,6 +4,7 @@ import com.records.demo.dao.EmployeeDAO;
 import com.records.demo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -82,6 +83,7 @@ public class EmplyeeServiceImpl implements EmployeeService{
         return employee;
     }
 
+    @Transactional
     @Override
     public Employee save(Employee employee) {
        return employeeDAO.save(employee);

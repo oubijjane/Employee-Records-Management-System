@@ -1,8 +1,11 @@
-package com.records.demo.entity;
+package com.records.demo.audit;
+
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.envers.Audited;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -10,51 +13,28 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
-@Setter
+import static jakarta.persistence.TemporalType.TIMESTAMP;
+
 @Getter
-@Entity
-@Audited
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
+@MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class Roles {
+public class AuditInfo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "user_id")
-    @Getter(AccessLevel.NONE)
-    private Users user;
-
-    @Column
-    private String email;
-
-    @Column()
-    private String role;
-
-    @Column
     @CreatedBy
     private String createdBy;
 
-    @Column
     @CreatedDate
     private LocalDateTime created;
 
-    @Column
     @LastModifiedBy
     private String modifiedBy;
 
-    @Column
     @LastModifiedDate
     private LocalDateTime modified;
-
-    public Roles(Users user, String role) {
-
-        this.role = role;
-        this.user = user;
-        this.email = user.getEmail();
-    }
-
 }

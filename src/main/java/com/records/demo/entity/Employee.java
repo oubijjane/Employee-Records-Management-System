@@ -1,13 +1,30 @@
 package com.records.demo.entity;
 
+import com.records.demo.audit.AuditInfo;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.envers.Audited;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
+
+@Setter
+@Getter
 @Entity
-public class Employee {
+@Audited
+@EntityListeners(AuditingEntityListener.class)
+public class Employee{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int employeeId;
 
     @Column
@@ -37,101 +54,22 @@ public class Employee {
     @Column
     private String status;
 
-    public Employee(int employeeId, String firstName, String lastName, String department, String hireDate,
-                    String phoneNumber, String email, String adress, String jobTitle, String status) {
-        this.employeeId = employeeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.department = department;
-        this.hireDate = hireDate;
-        this.PhoneNumber = phoneNumber;
-        this.email = email;
-        this.adress = adress;
-        this.jobTitle = jobTitle;
-        this.status = status;
-    }
+    @Column
+    @CreatedBy
+    private String createdBy;
 
-    public Employee () {}
+    @Column
+    @CreatedDate
+    private LocalDateTime created;
 
-    public void setAdress(String adress) {
-        this.adress = adress;
-    }
+    @Column
+    @LastModifiedBy
+    private String modifiedBy;
 
-    public String getJobTitle() {
-        return jobTitle;
-    }
+    @Column
+    @LastModifiedDate
+    private LocalDateTime modified;
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getPhoneNumber() {
-        return PhoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public String getHireDate() {
-        return hireDate;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
-    public void setHireDate(String hireDate) {
-        this.hireDate = hireDate;
-    }
 
     @Override
     public boolean equals(Object o) {

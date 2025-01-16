@@ -1,10 +1,27 @@
 package com.records.demo.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.envers.Audited;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Audited
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@EntityListeners(AuditingEntityListener.class)
 public class Users {
 
     @Id
@@ -24,53 +41,21 @@ public class Users {
     private String department;
 
 
-    public Users(int id, String email, String password, String department) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.department = department;
-    }
+    @Column
+    @CreatedBy
+    private String createdBy;
 
-    public Users() {
-    }
+    @Column
+    @CreatedDate
+    private LocalDateTime created;
 
-    public int getId() {
-        return id;
-    }
+    @Column
+    @LastModifiedBy
+    private String modifiedBy;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @Column
+    @LastModifiedDate
+    private LocalDateTime modified;
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-      public List<Roles> getRoles() {
-         return roles;
-     }
-
-    public void setRoles(List<Roles> roles) {
-        this.roles = roles;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
 }

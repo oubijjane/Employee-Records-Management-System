@@ -95,18 +95,17 @@ public class EmployeeController {
             if(!employeeService.findById(employee.getEmployeeId()).getDepartment().equals(getUserDepartment())) {
                 throw new AccessDeniedException("You are not authorized to update this employee's record.");
             };
-            employeeService.updateEmployee(employee.getEmployeeId(),employee.getPhoneNumber(),employee.getAdress(),
-                    employee.getEmail(),employee.getFirstName(),employee.getLastName(),employee.getStatus());
-            return null;
+//            employeeService.updateEmployee(employee.getEmployeeId(),employee.getPhoneNumber(),employee.getAdress(),
+//                    employee.getEmail(),employee.getFirstName(),employee.getLastName(),employee.getStatus());
+            Employee updatedEmployee = employeeService.findById(employee.getEmployeeId());
+            updatedEmployee.setFirstName(employee.getFirstName());
+            return employeeService.save(updatedEmployee);
         }
         return employeeService.save(employee);
     }
 
     @PostMapping("/employees")
     public Employee addEmployee(@RequestBody @NotNull Employee employee) {
-        // also just in case they pass an id in JSON ... set id to 0
-        // this is to force a save of new item ... instead of update
-        employee.setEmployeeId(0);
         return employeeService.save(employee);
     }
     @DeleteMapping("/employees/{id}")

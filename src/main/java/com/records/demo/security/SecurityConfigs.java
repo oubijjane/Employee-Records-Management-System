@@ -23,6 +23,7 @@ public class SecurityConfigs {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(config -> config
+                .requestMatchers("/error").permitAll()
                 .requestMatchers(HttpMethod.GET,"/api/employees").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.GET,"/api/employees/**").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.PUT,"/api/employees").hasRole("MANAGER")
