@@ -23,6 +23,10 @@ public class EmployeeController {
     public List<Employee> getEmployees() {
         return employeeService.findAll();
     }
+//    @GetMapping("/employees/department")
+//    public List<Employee> getEmployeesByDepartment() {
+//        return employeeService.findAll();
+//    }
     @GetMapping("/employees/id/{id}")
     public Employee getEmployeeById(@PathVariable("id") int id) {
         return employeeService.findById(id);

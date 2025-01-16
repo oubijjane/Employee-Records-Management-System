@@ -2,6 +2,8 @@ package com.records.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Users {
 
@@ -14,14 +16,15 @@ public class Users {
     @Column
     private String password;
 
-    @Column
-    private String role;
+    @OneToMany(mappedBy = "user",
+            cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+    private List<Roles> roles;
 
-    public Users(int id, String email, String password, String role) {
+
+    public Users(int id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
-        this.role = role;
     }
 
     public Users() {
@@ -51,11 +54,11 @@ public class Users {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
+    public List<Roles> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(List<Roles> roles) {
+        this.roles = roles;
     }
 }
