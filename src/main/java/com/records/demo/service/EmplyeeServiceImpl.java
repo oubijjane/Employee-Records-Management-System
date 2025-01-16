@@ -59,6 +59,18 @@ public class EmplyeeServiceImpl implements EmployeeService{
     }
 
     @Override
+    public List<Employee> findByDepartment(String department) {
+        return    employeeDAO.findByDepartment(department);
+    }
+
+    @Override
+    public int updateEmployee(int employeeId, String phoneNumber, String address, String email, String firstName,
+                                   String lastName, String status) {
+        return employeeDAO.saveEmployee(employeeId, phoneNumber, address, email,
+                firstName, lastName, status);
+    }
+
+    @Override
     public Employee findById(int id) {
         Optional<Employee> result = employeeDAO.findById(id);
         Employee employee = null;

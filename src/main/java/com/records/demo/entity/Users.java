@@ -20,11 +20,15 @@ public class Users {
             cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Roles> roles;
 
+    @Column
+    private String department;
 
-    public Users(int id, String email, String password) {
+
+    public Users(int id, String email, String password, String department) {
         this.id = id;
         this.email = email;
         this.password = password;
+        this.department = department;
     }
 
     public Users() {
@@ -54,11 +58,19 @@ public class Users {
         this.password = password;
     }
 
-    public List<Roles> getRoles() {
-        return roles;
-    }
+      public List<Roles> getRoles() {
+         return roles;
+     }
 
     public void setRoles(List<Roles> roles) {
         this.roles = roles;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

@@ -4,6 +4,7 @@ import com.records.demo.entity.Users;
 import com.records.demo.service.UserService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,10 +14,12 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder= passwordEncoder;
     }
 
     @GetMapping("/users")
@@ -42,6 +45,7 @@ public class UserController {
     @PostMapping("/users")
     public Users addUser(@RequestBody @NotNull Users user) {
         user.setId(0);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userService.save(user);
     }
 

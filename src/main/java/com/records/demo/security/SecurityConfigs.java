@@ -25,10 +25,11 @@ public class SecurityConfigs {
         httpSecurity.authorizeHttpRequests(config -> config
                 .requestMatchers(HttpMethod.GET,"/api/employees").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.GET,"/api/employees/**").hasRole("MANAGER")
-                .requestMatchers(HttpMethod.POST,"/api/employees").hasRole("HR")
-                .requestMatchers(HttpMethod.PUT,"/api/employees").hasRole("HR")
-                .requestMatchers(HttpMethod.DELETE,"/api/employees/**","/api/users/**",
-                        "/api/users").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT,"/api/employees").hasRole("MANAGER")
+                .requestMatchers(HttpMethod.POST,"/api/employees").hasRole("HRESOURCES")
+                .requestMatchers(HttpMethod.DELETE,"/api/employees/**").hasRole("HRESOURCES")
+                .requestMatchers("/api/users/**",
+                        "/api/users","/api/roles", "/api/roles/**").hasRole("ADMIN")
 
         ).csrf(AbstractHttpConfigurer::disable).httpBasic(Customizer.withDefaults());
 
@@ -36,41 +37,41 @@ public class SecurityConfigs {
         return httpSecurity.build();
     }
 
-//    @Bean
-//    public UserDetailsManager userDetailsManagerDataBase(DataSource dataSource){
-//        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
-//
-//        jdbcUserDetailsManager.setUsersByUsernameQuery(
-//                "select email, password, enabled from customer where email=?"
-//        );
-//        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
-//                "select email, role from roles where email=?"
-//        );
-//
-//        return jdbcUserDetailsManager;
-//    }
-      @Bean
-    public InMemoryUserDetailsManager userDetailsManager() {
-        UserDetails john = User.builder()
-                .username("john")
-                .password("{noop}test123")
-                .roles("MANAGER")
-                .build();
+    @Bean
+    public UserDetailsManager userDetailsManagerDataBase(DataSource dataSource){
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
 
-        UserDetails mary = User.builder()
-                .username("mary")
-                .password("{noop}test123")
-                .roles("HR","MANAGER")
-                .build();
+        jdbcUserDetailsManager.setUsersByUsernameQuery(
+                "select email, password, 1 as enabled from users where email=?"
+        );
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
+                "select email, role from roles where email=?"
+        );
 
-        UserDetails susan = User.builder()
-                .username("susan")
-                .password("{noop}test123")
-                .roles("HR","MANAGER","ADMIN")
-                .build();
-
-        return new InMemoryUserDetailsManager(john,mary,susan);
+        return jdbcUserDetailsManager;
     }
+ //     @Bean
+//    public InMemoryUserDetailsManager userDetailsManager() {
+//        UserDetails john = User.builder()
+//                .username("john")
+//                .password("{noop}test123")
+//                .roles("MANAGER")
+//                .build();
+//
+//        UserDetails mary = User.builder()
+//                .username("mary")
+//                .password("{noop}test123")
+//                .roles("HRESOURCES","MANAGER")
+//                .build();
+//
+//        UserDetails susan = User.builder()
+//                .username("susan")
+//                .password("{noop}test123")
+//                .roles("HRESOURCES","MANAGER","ADMIN")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(john,mary,susan);
+//    }
 
 
 }
