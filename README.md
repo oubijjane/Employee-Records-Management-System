@@ -29,6 +29,6 @@ The Employee Records Management System is an internal tool developed to centrali
 
 
 ### Running the Project Locally
-download the docker-image.tar in load dit in docker:
+download the docker-image.tar in load it in docker:
 - [Google Drive](https://drive.google.com/file/d/1JELEr8CtkIhdPgjyzGmALlvtLe3N0Ljo/view?usp=sharing)
 - you can find the postman collections in the repository 
