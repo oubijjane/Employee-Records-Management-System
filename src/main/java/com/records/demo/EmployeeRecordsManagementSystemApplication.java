@@ -20,7 +20,6 @@ import java.util.Optional;
 
 
 @SpringBootApplication
-@EnableJpaAuditing
 public class EmployeeRecordsManagementSystemApplication {
 
 	public static void main(String[] args) {
@@ -29,11 +28,6 @@ public class EmployeeRecordsManagementSystemApplication {
 	@Bean
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder(BCryptPasswordEncoder.BCryptVersion.$2B);
-	}
-
-	@Bean
-	public AuditorAware<String> auditorAware() {
-		return new AuditorAwareImpl();
 	}
 
 	@Bean

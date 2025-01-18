@@ -24,17 +24,17 @@ public class RolesController {
     }
 
     @GetMapping("/roles")
-    public List<Roles> getEmployees() {
+    public List<Roles> getRoles() {
         return rolesService.findAll();
     }
 
     @GetMapping("/roles/id/{id}")
-    public Roles getEmployeeById(@PathVariable("id") int id) {
+    public Roles getRoleById(@PathVariable("id") int id) {
         return rolesService.findById(id);
     }
 
     @GetMapping("/roles/email/{email}")
-    public List<Roles> getUserByEmail(@PathVariable("email") String email) {
+    public List<Roles> getRolesByEmail(@PathVariable("email") String email) {
         return rolesService.findByEmail(email);
     }
     @DeleteMapping("/roles/{id}")
