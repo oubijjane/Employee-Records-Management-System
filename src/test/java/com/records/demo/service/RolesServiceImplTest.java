@@ -74,7 +74,6 @@ class RolesServiceImplTest {
     void deleteById() {
         int id = 0;
 
-
         //when
         underTest.deleteById(id);
 
