@@ -1,9 +1,7 @@
-package com.records.demo.restController;
+package com.records.demo.service;
 
 import com.records.demo.dao.EmployeeDAO;
 import com.records.demo.entity.Employee;
-import com.records.demo.service.EmployeeService;
-import com.records.demo.service.EmplyeeServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,12 +14,11 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class EmployeeControllerTest {
+class EmployeeServiceImplTest {
 
     @Mock
     private EmployeeDAO employeeDAO;
