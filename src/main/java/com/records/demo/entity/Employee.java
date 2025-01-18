@@ -45,7 +45,7 @@ public class Employee{
     @Column
     private String PhoneNumber;
 
-    @Column
+    @Column(unique = true)
     @Email(message = "enter a valid email")
     @NotBlank(message = "required")
     private String email;
