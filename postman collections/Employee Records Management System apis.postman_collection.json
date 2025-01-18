@@ -1,0 +1,704 @@
+{
+	"info": {
+		"_postman_id": "9ce1b51b-24b0-48a4-a99d-6d863dc17961",
+		"name": " Employee Records Management System apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41089345"
+	},
+	"item": [
+		{
+			"name": "add new employee",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"john\",\r\n        \"lastName\": \"doe\",\r\n        \"department\": \"IT\",\r\n        \"hireDate\": \"20/01/2024\",\r\n        \"email\": \"johnDoe@email.com\",\r\n        \"adress\": \"casa\",\r\n        \"jobTitle\": \"dev\",\r\n        \"status\": \"available\",\r\n        \"phoneNumber\": \"060000000000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all employees",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"James\",\r\n        \"lastName\": \"L. Jones\",\r\n        \"department\": \"marketing\",\r\n        \"hireDate\": \"02/01/2023\",\r\n        \"email\": \"jales@email.com\",\r\n        \"adress\": \"casa\",\r\n        \"jobTitle\": \"Brand managemenT\",\r\n        \"status\": \"available\",\r\n        \"phoneNumber\": \"060000000000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete an employee",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"James\",\r\n        \"lastName\": \"L. Jones\",\r\n        \"department\": \"marketing\",\r\n        \"hireDate\": \"02/01/2023\",\r\n        \"email\": \"jales@email.com\",\r\n        \"adress\": \"casa\",\r\n        \"jobTitle\": \"Brand managemenT\",\r\n        \"status\": \"available\",\r\n        \"phoneNumber\": \"060000000000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employees/952",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees",
+						"952"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update an employee",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"employeeId\": 953,\r\n        \"firstName\": \"john\",\r\n        \"lastName\": \"L. Jones\",\r\n        \"department\": \"marketing\",\r\n        \"hireDate\": \"02/01/2023\",\r\n        \"email\": \"john@email.com\",\r\n        \"adress\": \"casa\",\r\n        \"jobTitle\": \"Brand managemenT\",\r\n        \"status\": \"available\",\r\n        \"createdBy\": \"admin@email.com\",\r\n        \"created\": \"2025-01-18T15:57:10.020192\",\r\n        \"modifiedBy\": \"admin@email.com\",\r\n        \"modified\": \"2025-01-18T15:57:10.020192\",\r\n        \"phoneNumber\": \"060000000000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get an employee from  id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"James\",\r\n        \"lastName\": \"L. Jones\",\r\n        \"department\": \"marketing\",\r\n        \"hireDate\": \"02/01/2023\",\r\n        \"email\": \"jales@email.com\",\r\n        \"adress\": \"casa\",\r\n        \"jobTitle\": \"Brand managemenT\",\r\n        \"status\": \"available\",\r\n        \"phoneNumber\": \"060000000000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employees/id/953",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees",
+						"id",
+						"953"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get an employee from first name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"James\",\r\n        \"lastName\": \"L. Jones\",\r\n        \"department\": \"marketing\",\r\n        \"hireDate\": \"02/01/2023\",\r\n        \"email\": \"jales@email.com\",\r\n        \"adress\": \"casa\",\r\n        \"jobTitle\": \"Brand managemenT\",\r\n        \"status\": \"available\",\r\n        \"phoneNumber\": \"060000000000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employees/first-name/john",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees",
+						"first-name",
+						"john"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get an employee from last name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"James\",\r\n        \"lastName\": \"L. Jones\",\r\n        \"department\": \"marketing\",\r\n        \"hireDate\": \"02/01/2023\",\r\n        \"email\": \"jales@email.com\",\r\n        \"adress\": \"casa\",\r\n        \"jobTitle\": \"Brand managemenT\",\r\n        \"status\": \"available\",\r\n        \"phoneNumber\": \"060000000000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employees/last-name/L. Jones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees",
+						"last-name",
+						"L. Jones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get an employee from job title",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"James\",\r\n        \"lastName\": \"L. Jones\",\r\n        \"department\": \"marketing\",\r\n        \"hireDate\": \"02/01/2023\",\r\n        \"email\": \"jales@email.com\",\r\n        \"adress\": \"casa\",\r\n        \"jobTitle\": \"Brand managemenT\",\r\n        \"status\": \"available\",\r\n        \"phoneNumber\": \"060000000000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/employees/job-title/Brand managemenT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees",
+						"job-title",
+						"Brand managemenT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all the users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"firstName\": \"James\",\r\n        \"lastName\": \"L. Jones\",\r\n        \"department\": \"marketing\",\r\n        \"hireDate\": \"02/01/2023\",\r\n        \"email\": \"jales@email.com\",\r\n        \"adress\": \"casa\",\r\n        \"jobTitle\": \"Brand managemenT\",\r\n        \"status\": \"available\",\r\n        \"phoneNumber\": \"060000000000\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update a user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 6,\r\n        \"email\": \"user1@email.com\",\r\n        \"password\": \"test12\",\r\n        \"department\": \"Brand managemenT\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add a user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"email\": \"user2@email.com\",\r\n        \"password\": \"test12\",\r\n        \"department\": \"Brand managemenT\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a user from an id",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"email\": \"user2@email.com\",\r\n        \"password\": \"test12\",\r\n        \"department\": \"Brand managemenT\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add a role to a user",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/users/4/ROLE_MANAGER",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"4",
+						"ROLE_MANAGER"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all roles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/roles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a role",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin@email.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/roles/1202",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"roles",
+						"1202"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
