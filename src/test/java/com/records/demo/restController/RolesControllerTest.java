@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -25,6 +27,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(MockitoExtension.class)
 class RolesControllerTest {
 
+    @Value("${server.port}")
+    private int port;
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -40,34 +45,35 @@ class RolesControllerTest {
     @Test
     @WithMockUser(username = "test", roles = "ADMIN")
     void getRoles_Authorized() throws Exception {
-        this.mockMvc.perform(get("http://localhost:8080/api/roles")).andExpect(status().isOk());
+
+        this.mockMvc.perform(get("http://localhost:"+port+"/api/roles")).andExpect(status().isOk());
         verify(rolesService).findAll();
     }
 
     @Test
     @WithMockUser(username = "test", roles = "MANAGER")
     void getRoles_Unauthorized() throws Exception {
-        this.mockMvc.perform(get("http://localhost:8080/api/roles")).andExpect(status().isForbidden());
+        this.mockMvc.perform(get("http://localhost:"+port+"/api/roles")).andExpect(status().isForbidden());
     }
 
     @Test
     @WithMockUser(username = "test", roles = "ADMIN")
     void getEmployeeById() throws Exception {
-        this.mockMvc.perform(get("http://localhost:8080/api/roles/id/1")).andExpect(status().isOk());
+        this.mockMvc.perform(get("http://localhost:"+port+"/api/roles/id/1")).andExpect(status().isOk());
         verify(rolesService).findById(1);
     }
 
     @Test
     @WithMockUser(username = "test", roles = "ADMIN")
     void getRolesByEmail() throws Exception {
-        this.mockMvc.perform(get("http://localhost:8080/api/roles/email/email")).andExpect(status().isOk());
+        this.mockMvc.perform(get("http://localhost:"+port+"/api/roles/email/email")).andExpect(status().isOk());
         verify(rolesService).findByEmail("email");
     }
 
     @Test
     @WithMockUser(username = "test", roles = "ADMIN")
     void deletById() throws Exception {
-        this.mockMvc.perform(delete("http://localhost:8080/api/roles/1")).andExpect(status().isOk());
+        this.mockMvc.perform(delete("http://localhost:"+port+"/api/roles/1")).andExpect(status().isOk());
         verify(rolesService).deleteById(1);
     }
 }
