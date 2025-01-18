@@ -30,7 +30,7 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column
+    @Column(unique = true)
     @Email(message = "enter a valid email")
     private String email;
     @Column

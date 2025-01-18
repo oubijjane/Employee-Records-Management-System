@@ -51,7 +51,7 @@ public class SecurityConfigs {
 
         return jdbcUserDetailsManager;
     }
- //     @Bean
+//      @Bean
 //    public InMemoryUserDetailsManager userDetailsManager() {
 //        UserDetails john = User.builder()
 //                .username("john")
@@ -67,7 +67,7 @@ public class SecurityConfigs {
 //
 //        UserDetails susan = User.builder()
 //                .username("susan")
-//                .password("{noop}test123")
+//                .password("$2a$12$iYD4xomh2scqqiPfPmapee13ZgDAVw2.JxXioMAHIdnaR1zc/oURi")
 //                .roles("HRESOURCES","MANAGER","ADMIN")
 //                .build();
 //

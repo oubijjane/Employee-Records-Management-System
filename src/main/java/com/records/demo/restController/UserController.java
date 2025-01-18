@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/api")
@@ -44,11 +45,16 @@ public class UserController {
 
     @PutMapping("/users")
     public Users updateUser(@Valid @RequestBody Users user) {
+        Pattern BCRYPT_PATTERN = Pattern.compile("\\A\\$2a?\\$\\d\\d\\$[./0-9A-Za-z]{53}");
+        if(!BCRYPT_PATTERN.matcher(user.getPassword()).matches()) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         return userService.save(user);
     }
 
     @PostMapping("/users")
     public Users addUser(@RequestBody @NotNull Users user) {
+        System.out.println(passwordEncoder.encode(user.getPassword()));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userService.save(user);
     }

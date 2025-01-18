@@ -42,12 +42,4 @@ public class RolesController {
         rolesService.deleteById(id);
     }
 
-    @PostMapping("/roles")
-    public Roles addRole(@Valid @RequestBody  Roles role) {
-        return rolesService.save(role);
-    }
-    @PutMapping("/roles")
-    public Roles updateRole(@Valid @RequestBody Roles role) {
-        return rolesService.save(role);
-    }
 }
