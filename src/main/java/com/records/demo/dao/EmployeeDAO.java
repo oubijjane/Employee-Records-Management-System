@@ -16,28 +16,4 @@ public interface EmployeeDAO extends JpaRepository<Employee, Integer> {
    List<Employee> findByJobTitle(String jobTitle);
    List<Employee> findByDepartment(String department);
 
-   @Transactional
-   @Modifying
-   @Query(value = "UPDATE Employee SET PhoneNumber = :phoneNumber, adress = :address, " +
-           "email = :email, firstName = :firstName, lastName = :lastName, " +
-           "status = :status WHERE employeeId = :employeeId")
-   int saveEmployee(@Param("employeeId") int employeeId,
-                         @Param("phoneNumber") String phoneNumber,
-                         @Param("address") String address,
-                         @Param("email") String email,
-                         @Param("firstName") String firstName,
-                         @Param("lastName") String lastName,
-                         @Param("status") String status);
-
-//   @Modifying
-//   @Query(value = "UPDATE Employee SET PhoneNumber = :phoneNumber, adress = :address, department= :department, " +
-//           " hireDate= :hireDate, jobTitle =: jobTitleemail = :email, firstName = :firstName, lastName = :lastName, " +
-//           "status = :status WHERE employeeId = :employeeId")
-//   int update(@Param("employeeId") int employeeId,
-//                    @Param("phoneNumber") String phoneNumber,
-//                    @Param("address") String address,
-//                    @Param("email") String email,
-//                    @Param("firstName") String firstName,
-//                    @Param("lastName") String lastName,
-//                    @Param("status") String status);
 }

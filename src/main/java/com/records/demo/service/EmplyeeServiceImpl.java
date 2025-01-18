@@ -64,12 +64,6 @@ public class EmplyeeServiceImpl implements EmployeeService{
         return    employeeDAO.findByDepartment(department);
     }
 
-    @Override
-    public int updateEmployee(int employeeId, String phoneNumber, String address, String email, String firstName,
-                                   String lastName, String status) {
-        return employeeDAO.saveEmployee(employeeId, phoneNumber, address, email,
-                firstName, lastName, status);
-    }
 
     @Override
     public Employee findById(int id) {
