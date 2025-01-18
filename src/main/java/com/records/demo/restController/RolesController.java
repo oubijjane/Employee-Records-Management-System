@@ -4,6 +4,7 @@ import com.records.demo.entity.Employee;
 import com.records.demo.entity.Roles;
 import com.records.demo.entity.Users;
 import com.records.demo.service.RolesService;
+import jakarta.validation.Valid;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,11 +43,11 @@ public class RolesController {
     }
 
     @PostMapping("/roles")
-    public Roles addRole(@RequestBody @NotNull Roles role) {
+    public Roles addRole(@Valid @RequestBody  Roles role) {
         return rolesService.save(role);
     }
     @PutMapping("/roles")
-    public Roles updateRole(@RequestBody Roles role) {
+    public Roles updateRole(@Valid @RequestBody Roles role) {
         return rolesService.save(role);
     }
 }

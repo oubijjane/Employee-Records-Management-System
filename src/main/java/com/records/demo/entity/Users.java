@@ -1,6 +1,8 @@
 package com.records.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,8 +31,10 @@ public class Users {
     private int id;
 
     @Column
+    @Email(message = "enter a valid email")
     private String email;
     @Column
+    @NotBlank(message = "required")
     private String password;
 
     @OneToMany(mappedBy = "user",
@@ -38,6 +42,7 @@ public class Users {
     private List<Roles> roles;
 
     @Column
+    @NotBlank(message = "required")
     private String department;
 
 

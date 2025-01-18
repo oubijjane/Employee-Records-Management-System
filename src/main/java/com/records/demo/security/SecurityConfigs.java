@@ -23,13 +23,13 @@ public class SecurityConfigs {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(config -> config
-                .requestMatchers("/error").permitAll()
+                .requestMatchers("/error","/swagger-ui.html","/swagger-ui/**","/v3/api-docs/**","/v3/api-docs").permitAll()
                 .requestMatchers(HttpMethod.GET,"/api/employees").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.GET,"/api/employees/**").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.PUT,"/api/employees").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.POST,"/api/employees").hasRole("HRESOURCES")
                 .requestMatchers(HttpMethod.DELETE,"/api/employees/**").hasRole("HRESOURCES")
-                .requestMatchers("/api/users/**",
+                .requestMatchers("/api/users/**","/api/**",
                         "/api/users","/api/roles", "/api/roles/**").hasRole("ADMIN")
 
         ).csrf(AbstractHttpConfigurer::disable).httpBasic(Customizer.withDefaults());

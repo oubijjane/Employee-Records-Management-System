@@ -2,6 +2,8 @@ package com.records.demo.entity;
 
 import com.records.demo.audit.AuditInfo;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,21 +30,27 @@ public class Employee{
     private int employeeId;
 
     @Column
+    @NotBlank(message = "required")
     private String firstName;
 
     @Column
+    @NotBlank(message = "required")
     private String lastName;
 
     @Column
+    @NotBlank(message = "required")
     private String department;
 
     @Column
+    @NotBlank(message = "required")
     private String hireDate;
 
     @Column
     private String PhoneNumber;
 
     @Column
+    @Email(message = "enter a valid email")
+    @NotBlank(message = "required")
     private String email;
 
     @Column

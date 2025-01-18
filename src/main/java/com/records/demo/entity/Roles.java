@@ -1,6 +1,8 @@
 package com.records.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.springframework.data.annotation.CreatedBy;
@@ -29,9 +31,12 @@ public class Roles {
     private Users user;
 
     @Column
+    @Email(message = "enter a valid email")
+    @NotBlank(message = "required")
     private String email;
 
     @Column()
+    @NotBlank(message = "required")
     private String role;
 
     @Column

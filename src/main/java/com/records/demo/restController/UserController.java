@@ -4,6 +4,7 @@ import com.records.demo.entity.Roles;
 import com.records.demo.entity.Users;
 import com.records.demo.service.RolesService;
 import com.records.demo.service.UserService;
+import jakarta.validation.Valid;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -42,7 +43,7 @@ public class UserController {
     }
 
     @PutMapping("/users")
-    public Users updateUser(@RequestBody Users user) {
+    public Users updateUser(@Valid @RequestBody Users user) {
         return userService.save(user);
     }
 
@@ -55,7 +56,8 @@ public class UserController {
     @PutMapping("/users/{id}/{role}")
     public Users addRole(@PathVariable("id") int id, @PathVariable("role") String role) {
        Users user =  userService.findById(id);
-       rolesService.save(new Roles(user, role));
+       @Valid Roles newRole = new Roles(user, role);
+       rolesService.save(newRole);
 
         return  user;
     }
