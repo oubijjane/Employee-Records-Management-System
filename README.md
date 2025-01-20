@@ -8,7 +8,6 @@ The Employee Records Management System is an internal tool developed to centrali
 - Role-based permissions (HR, Manager, Admin)
 - Search and filtering options for employee data
 - Audit trail logging changes to employee records
-- Reporting functionalities for employee data
 - Validation of employee data (e.g., unique employee ID, valid email)
 - Swagger OpenAPI documentation for API endpoints
 - Dockerized backend with Oracle DB
