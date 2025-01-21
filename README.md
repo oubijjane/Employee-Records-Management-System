@@ -15,7 +15,6 @@ The Employee Records Management System is an internal tool developed to centrali
 ## Technologies Used
 - **Backend**: Java 17, Spring Boot
 - **Database**: Oracle SQL
-- **UI**: Java Swing (MigLayout, GridBagLayout)
 - **Testing**: JUnit, Mockito, Postman
 - **Docker**: Docker Compose for app and database containers
 
